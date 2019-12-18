@@ -1,0 +1,27 @@
+From 8910bfb5ef9ac403ef4801e9e9d900711287d39c Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Wed, 18 Dec 2019 02:54:39 -0800
+Subject: [PATCH] clients/presentation-shm: Add missing dependency on xdg-shell
+ protocol
+
+Signed-off-by: Michael Forney <mforney@mforney.org>
+---
+ clients/meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/clients/meson.build b/clients/meson.build
+index ff6246db..99c443ae 100644
+--- a/clients/meson.build
++++ b/clients/meson.build
+@@ -262,6 +262,8 @@ demo_clients = [
+ 		'add_sources': [
+ 			presentation_time_client_protocol_h,
+ 			presentation_time_protocol_c,
++			xdg_shell_client_protocol_h,
++			xdg_shell_protocol_c,
+ 		]
+ 	},
+ 	{ 'basename': 'resizor' },
+-- 
+2.24.1
+
