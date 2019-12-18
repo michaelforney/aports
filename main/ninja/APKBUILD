@@ -2,7 +2,7 @@
 # Maintainer: Natanael Copa <ncopa@alpinelinux.org>
 pkgname=ninja
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Small build system with a focus on speed"
 url="https://ninja-build.org/"
 arch="all"
@@ -25,27 +25,15 @@ _py3_sitelib() {
 
 build() {
 	cd "$builddir"
-	python3 ./configure.py --bootstrap
-	asciidoctor doc/manual.asciidoc
 }
 
 check() {
 	cd "$builddir"
-
-	./ninja ninja_test
-	./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
 }
 
 package() {
 	cd "$builddir"
-	install -m755 -D ninja "$pkgdir/usr/bin/ninja"
-	install -m644 -D doc/manual.asciidoc \
-		"$pkgdir/usr/share/doc/ninja/manual.asciidoc"
-	install -m644 -D doc/manual.html \
-		"$pkgdir/usr/share/doc/ninja/manual.html"
-
-	install -m644 -D misc/ninja_syntax.py \
-		"${pkgdir}$(_py3_sitelib)/ninja_syntax.py"
+	install -m755 -d "$pkgdir/usr/share/doc"
 }
 
 bashcomp() {
