@@ -22,17 +22,17 @@ build() {
 		-Dlibwacom=false \
 		-Ddebug-gui=false \
 		-Dtests=false builddir/
-	ninja -C builddir/
+	samu -C builddir/
 }
 
 check() {
 	cd "$builddir/builddir"
-	ninja test
+	samu test
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C builddir/ install
+	DESTDIR="$pkgdir" samu -C builddir/ install
 }
 
 sha512sums="f01d1bd1b25b8060519575644597d35f0c89de5386d298441f440128ceee3e57549921a058adec31adc8b33dbdedf4c0bd12c76905a69f752859d3136e26336d  libinput-1.14.3.tar.xz"

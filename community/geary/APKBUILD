@@ -28,18 +28,18 @@ build() {
 		--buildtype=release \
 		-Dlibunwind_optional=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
 	# client-tests fail with
 	# ** (geary-test-client:6140): WARNING **: 22:33:28.365: WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS is deprecated and has no effect
 	[ "$CARCH" = x86 ] && return 0
-	xvfb-run ninja -C output test
+	xvfb-run samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="d34886829e1330bfe7fe4891b5e368010f5742a5ac20ab057a902897df1f6c4145a882379d9dbe82e0c954a91db265b9758ddd2eb96b9c03c0efc0f6d8cc6ea0  geary-3.34.2.tar.xz"

@@ -21,11 +21,11 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="1be6230da5ff47a129db43b5f5467d3fed8925fad7a6637f24d72c8c99c80d8dd1635eaef1b7c7f650a86132a54cde8326d3418075f5818d0154dc8d503927c7  gnome-font-viewer-3.34.0.tar.xz"

@@ -19,11 +19,11 @@ build() {
 		--sysconfdir=/etc \
 		--datadir=/usr/share \
 		output .
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="bea6df85611a845c1013091dfccfd1d1fc697781a74348d936c15f8cec1ace765c37e6f57fed403cc2c6a91a18e522c8cc3db74b2c2327cd3ed71371075a9834  gnome-backgrounds-3.34.0.tar.xz"

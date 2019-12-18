@@ -17,11 +17,11 @@ build() {
 	meson \
 		--prefix=/usr \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="6121a5986ee7d7f96bf7f401e155f8aa37f076af455bc68e43d1b5b02b63bc9aed3eba5209511d1b659eb4c9093ab5d9601c14a5e868d979e92a6d0ca0cf9ce2  ghex-3.18.4.tar.xz"

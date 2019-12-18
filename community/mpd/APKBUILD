@@ -47,15 +47,15 @@ build() {
 		-Dtest=true \
 		-Ddocumentation=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output -v test
+	samu -C output -v test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	# provide a config that works by default
 	install -d "$pkgdir"/etc

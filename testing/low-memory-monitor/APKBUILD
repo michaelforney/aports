@@ -23,11 +23,11 @@ build() {
 		-Dgtk_doc=false \
 		-Dsystemdsystemunitdir=/DELETEME \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	# Remove systemd service
 	rm -rf "$pkgdir"/DELETEME

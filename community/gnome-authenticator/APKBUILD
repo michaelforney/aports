@@ -24,15 +24,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="3bd78354f4d18052d03650b455f07fb7fa9bb5cba0b6c92dcbfb5158dcf500f0b7f84e0be8942e0fbb74b1cefcd9019941c758538e05144c469bbe47b4355ce0  Authenticator-3.32.2.tar.gz

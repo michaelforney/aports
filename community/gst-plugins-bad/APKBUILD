@@ -36,7 +36,7 @@ build() {
 		-Dpackage-name="GStreamer bad plug-ins (Alpine Linux)" \
 		-Dvulkan=enabled \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -48,7 +48,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="aeaf3388156fe7317e193a3f940d391a6d8a1187f93e6925cee4cb02c4e78d9b456c22c27c318f0f9b2212ca68887c5cdcc256adaf068bfab8ec5c091a1e8805  gst-plugins-bad-1.16.2.tar.xz"

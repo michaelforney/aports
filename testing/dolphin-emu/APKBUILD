@@ -14,7 +14,7 @@ license="GPL-2.0-or-later"
 depends="mbedtls"
 makedepends="
 	cmake
-	ninja
+	samurai
 	mesa-dev
 	mesa-egl
 	ffmpeg-dev
@@ -92,7 +92,7 @@ build() {
 		-DUSE_DISCORD_PRESENCE=OFF \
 		-DUSE_SHARED_ENET=ON \
 		-DDISTRIBUTOR="alpinelinux.org"
-	ninja
+	samu
 }
 
 check() {
@@ -100,7 +100,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 
 	install -Dm 644 Data/51-usb-device.rules -t "$pkgdir"/usr/lib/udev/rules.d/
 }

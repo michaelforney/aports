@@ -13,7 +13,7 @@ makedepends="cairo-dev
 	libxkbcommon-dev
 	linux-pam-dev
 	meson
-	ninja
+	samurai
 	scdoc
 	wayland-dev
 	wayland-protocols
@@ -36,12 +36,12 @@ prepare() {
 build() {
 	cd "$builddir"
 	meson -Dswaylock-version="$pkgver" --prefix /usr build
-	ninja -C build
+	samu -C build
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 bashcomp() {

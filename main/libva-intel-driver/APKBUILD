@@ -18,15 +18,15 @@ build() {
 		--prefix=/usr \
 		-Dwith_wayland=yes \
 		-Dwith_x11=yes
-	ninja -C builddir
+	samu -C builddir
 }
 
 check() {
-	ninja -C builddir test
+	samu -C builddir test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C builddir install
+	DESTDIR="$pkgdir" samu -C builddir install
 }
 
 sha512sums="de4840a0e999defbccf4965b02fb0787b777795e5134894a4f30f67ec11fd1c99b765cd4a79802972671d38b3d20b443e76f75d34c03112a8fcb9b345a8640b5  libva-intel-driver-2.4.0.tar.gz"

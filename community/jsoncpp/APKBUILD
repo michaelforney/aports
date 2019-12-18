@@ -22,15 +22,15 @@ build() {
 	# we cannot use cmake since jsoncpp is a dependency for cmake which
 	# means we would get circular buildtime deps
 	meson --prefix /usr --libdir /usr/lib --buildtype release --default-library both . build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 static() {

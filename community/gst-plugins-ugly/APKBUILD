@@ -28,11 +28,11 @@ build() {
 		-Dpackage-origin="https://alpinelinux.org" \
 		-Dpackage-name="GStreamer ugly plug-ins (Alpine Linux)" \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 check() {

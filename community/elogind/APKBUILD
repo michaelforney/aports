@@ -54,15 +54,15 @@ build() {
 		-Ddefault-kill-user-processes=false \
 		-Dpolkit=true \
 		build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 
 	# Claim compatiblity with systemd and systemd-logind
 	ln -s libelogind.pc "$pkgdir"/usr/lib/pkgconfig/libsystemd.pc

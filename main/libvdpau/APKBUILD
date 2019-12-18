@@ -21,17 +21,17 @@ build() {
 		--buildtype=release \
 		-Ddri2=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
 	cd "$builddir"
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="7df0079c41ff7fd9f80e4500353c8154f57eb456f703aee4a9ff4d810185ef453fcf1b3925d13337b6765dbc86335e9700ef91f88b073c5bb5c8f9181447dea1  libvdpau-1.3.tar.gz"

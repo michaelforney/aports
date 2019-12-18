@@ -20,7 +20,7 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -30,7 +30,7 @@ check() {
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="443cd497049a5128e80a48c7b2afcc555a8d58a5eacc2dc6207058a9a399bc9e9804c7bca8b010af63f8be99000c05245720bd3e8cca248a74d5aa63a7faf4f9  slurp-1.2.0.tar.gz"

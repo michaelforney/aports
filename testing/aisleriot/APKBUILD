@@ -22,15 +22,15 @@ build() {
 		--buildtype=release \
 		-D theme_kde=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="c041fcf51949b5e0b6e0a1efb5665e0853537694e5fc35ac15f4f41d6133c56e078fcd92710da0cce957432883a7cea636698c3fc4e83e54262c25273c551eb3  aisleriot-3.22.10.tar.gz

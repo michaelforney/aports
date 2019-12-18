@@ -19,15 +19,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="6c2d89d2d62a768b669ca49e0298bddf4f4151358f0fc0314431c7f926df2323ac3b61540f2a3c95c7b5a88e4e2f08dae4d00f601506c9610a0edee4b00ba499  dconf-editor-3.34.2.tar.xz"

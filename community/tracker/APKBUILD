@@ -39,15 +39,15 @@ build() {
 		--buildtype=release \
 		-Dsystemd_user_services=no \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	# Remove installed tests
 	rm -r "$pkgdir"/usr/lib/tracker-2.0/trackertestutils

@@ -34,11 +34,11 @@ build() {
 		  -Dcrypto-library=gnutls \
 		  -Dgstreamer=enabled \
 		  -Dgupnp=disabled builddir
-	ninja -C builddir
+	samu -C builddir
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C builddir install
+	DESTDIR="$pkgdir" samu -C builddir install
 }
 
 _gst() {

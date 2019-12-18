@@ -11,14 +11,14 @@ depends="openssh dconf"
 makedepends="vala libxml2-utils
 	yelp-tools intltool itstool gpgme-dev libsoup-dev
 	libsm-dev libsecret-dev gobject-introspection
-	gtk+3.0-dev gcr-dev glib-dev meson ninja
+	gtk+3.0-dev gcr-dev glib-dev meson samurai
 	cmake libpwquality-dev openldap-dev avahi-dev"
 subpackages="$pkgname-lang $pkgname-doc"
 source="https://download.gnome.org/sources/seahorse/$pkgver/seahorse-$pkgver.tar.xz"
 
 build() {
 	meson --prefix=/usr builddir
-	ninja -C builddir
+	samu -C builddir
 }
 
 check() {

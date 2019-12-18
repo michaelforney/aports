@@ -24,15 +24,15 @@ build() {
 		--localstatedir=/var \
 		-Dsystemd_journal=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="23388420ee117596b73ac057d2376857db726fb727fdeff4e4f420e7742622e81baef439adb04d8659a6979e5b7043c72ea334c1179974950476489a8c397182  gnome-session-3.34.2.tar.xz

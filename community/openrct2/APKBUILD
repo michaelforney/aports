@@ -9,7 +9,7 @@ pkgdesc="Open-source re-implementation of Roller Coaster Tycoon 2"
 arch="all !s390x" # Build fails on s390x
 url="https://openrct2.io"
 license="GPL-3.0-only"
-makedepends="cmake ninja jansson-dev libzip-dev libpng-dev speexdsp-dev fontconfig-dev curl-dev icu-dev sdl2-dev mesa-dev fts-dev unzip"
+makedepends="cmake samurai jansson-dev libzip-dev libpng-dev speexdsp-dev fontconfig-dev curl-dev icu-dev sdl2-dev mesa-dev fts-dev unzip"
 install="$pkgname.post-install"
 source="$pkgname-$pkgver.tar.gz::https://github.com/openrct2/openrct2/archive/v$pkgver.tar.gz
 	$pkgname-$pkgver-title_sequences.zip::https://github.com/OpenRCT2/title-sequences/releases/download/v$_pkgver_title_sequences/title-sequence-v$_pkgver_title_sequences.zip
@@ -36,13 +36,13 @@ build() {
 		-DWITH_TESTS=ON \
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF \
 		-DDOWNLOAD_OBJECTS=OFF
-	ninja
+	samu
 }
 
 package() {
 	cd "$builddir"/build
 
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 
 	install -d "$pkgdir"/usr/share/openrct2/title
 	install -d "$pkgdir"/usr/share/openrct2/object

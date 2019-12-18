@@ -26,11 +26,11 @@ build() {
 		-Dpackage-name="GStreamer (Alpine Linux)" \
 		-Dpackage-origin="https://alpinelinux.org" \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 tools() {

@@ -22,11 +22,11 @@ build() {
 		-Dexamples=false \
 		-Ddocs=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="3788559405a495d43279b20b9d64e1fb0fb9be4125eb3011a623565938246310c2e81cb6d52db111e42a9cd0739bb273ccf7fcb7c52db8b74a1e44108e061c6d  gtk-layer-shell-0.1.0.tar.xz"

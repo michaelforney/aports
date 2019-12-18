@@ -55,17 +55,17 @@ build() {
 		-Dtests=true \
 		-Dudevdir=/lib/udev \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
 	# tests fail if usb is not available
 	[ -e /dev/bus/usb ] || return 0
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 	install -Dm755 "$srcdir"/$pkgname.initd "$pkgdir"/etc/init.d/$pkgname
 }
 

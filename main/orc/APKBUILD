@@ -29,17 +29,17 @@ build() {
 		--buildtype=release \
 		-Dorc-test=disabled \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
 	cd "$builddir"
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 compiler() {

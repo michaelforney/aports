@@ -29,17 +29,17 @@ build() {
 		-Denable-x11=true \
 		-Ddefault_library=both \
 		build
-	ninja -C build
+	samu -C build
 }
 
 check() {
 	cd "$builddir"
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 x11() {

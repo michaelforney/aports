@@ -22,15 +22,15 @@ build() {
 		--buildtype=release \
 		-Denable-chromaprint=no \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="93d4fcc7d6fd1b43925e286c8856c90d240cf9244d04a8b034df85781b1a6bffcb5c635576e37717325f82a0be567a7087715ff6d680b3c5aca133c6deb43ed2  grilo-plugins-0.3.10.tar.xz

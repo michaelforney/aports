@@ -20,15 +20,15 @@ build() {
 		--buildtype=release \
 		-Dinstalled_tests=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="842ac2c9c2046f07f8421b99292cac348276bb1e025250c7e0dc3ec7f90cb33094b765034862f325dd78f93aa5484ad75a4ad6139fe13330d9e41e3a7cb830d0  graphene-1.10.0.tar.xz"

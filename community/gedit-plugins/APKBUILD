@@ -22,15 +22,15 @@ build() {
 		--buildtype=release \
 		-Dplugin_zeitgeist=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="7fe31c2b0a1381a44362bd6066422d182b2246e3f903f8cd83cde0467b9853620a445bea7878d93e95a0a71ac5d5dd081a1930d602007cf2a6ef00b1a45bebfc  gedit-plugins-3.34.1.tar.xz"

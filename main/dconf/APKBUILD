@@ -20,7 +20,7 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -28,7 +28,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 bashcomp() {

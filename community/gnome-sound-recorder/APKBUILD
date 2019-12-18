@@ -19,15 +19,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="cb28f1f93f78cae5cc98750f937f60abb326065cdbbb1ee48146daceb9e34f03bc9bf4d78b7a149e579654673b9879fb249fd5a370a19764f01961c565b901ee  gnome-sound-recorder-3.34.0.tar.xz"

@@ -25,17 +25,17 @@ build() {
 		--prefix=/usr \
 		-Dtests=false \
 		output
-	ninja -C output
+	samu -C output
 }
 
 check() {
 	cd "$builddir"
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	# Fix on musl
 	sed -i 's|locale.textdomain("d-feet")||' "$pkgdir"/usr/bin/d-feet

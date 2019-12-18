@@ -25,15 +25,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="9e146db9de830a1766697f3b6657caa3feaeb270a951dc69d21fe08c39fa50d09eb2a63f66425fe37373c3423cca1b6a3a5b90994bd01f7bb1c13538e90d0873  eolie-0.9.63.tar.xz

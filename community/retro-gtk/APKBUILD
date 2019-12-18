@@ -21,15 +21,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	xvfb-run ninja -C output test
+	xvfb-run samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="bfb33b3c61eeb40a875f8e2024e23960719a759471b5b09b1e54f65938e2b324b87b8925fbea7086c2d13afb41b476c610905203e9f42a05bb1a68c2f9beb20f  retro-gtk-0.18.0.tar.xz"

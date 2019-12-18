@@ -22,15 +22,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="634dcd7e26ede955e8700335fcd04ab4bd40d083d251846f66a46dac49b7525e011b31de0b60585ed643d04798e472f4fbd69c872cdeed7fa36bcc445ff03016  gnome-books-3.34.0.tar.xz"

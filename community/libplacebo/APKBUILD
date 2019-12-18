@@ -32,15 +32,15 @@ build() {
 		-Dtests=true \
 		-Dlcms=enabled \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="63b2824b49847aacca703dbb360c6e029ab23578b2ade1cd8f7c46e751aefc40509bd13261ea018c089f6331c6cafbdc0364106d95eaa3fb06b24f61eb726a23  libplacebo-1.21.0.tar.gz"

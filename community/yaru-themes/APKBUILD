@@ -24,11 +24,11 @@ build() {
 		--prefix=/usr \
 		-Dcommunitheme_compat=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 common() {

@@ -8,7 +8,7 @@ url="https://github.com/bugaevc/wl-clipboard"
 arch="all"
 license="GPL-3.0-or-later"
 options="!check" # No test suite
-makedepends="meson ninja wayland-dev wayland-protocols"
+makedepends="meson samurai wayland-dev wayland-protocols"
 subpackages="$pkgname-doc"
 source="$pkgname-$pkgver.tar.gz::https://github.com/bugaevc/wl-clipboard/archive/v$pkgver.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
@@ -21,11 +21,11 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. build
-	ninja -C build
+	samu -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="a719b7197b0dec247ef50d800d8f10f3c377e41ff6d79ebfb4da50f2581d24a25ff987985e7a8f68842fdf8e706527d0b9ee3545c0044673110963b3ba8b55f1  wl-clipboard-2.0.0.tar.gz"

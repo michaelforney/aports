@@ -15,17 +15,17 @@ builddir="$srcdir/$pkgname-$pkgver"
 build() {
 	cd "$builddir"
 	meson --prefix=/usr --libdir=lib --buildtype=release build/
-	ninja -v -C build/
+	samu -v -C build/
 }
 
 check() {
 	cd "$builddir/build"
-	ninja test
+	samu test
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C build/ install
+	DESTDIR="$pkgdir" samu -C build/ install
 }
 
 sha512sums="09646e390cbfa667ad9aef52466c24f6a2499ac02d1296e73919574d4670be6a8880e4e491f875719d6946998d2cf1d98fadbb7102f614e839f986fbc38fca65  libgxps-0.3.1.tar.gz"

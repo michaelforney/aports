@@ -41,7 +41,7 @@ build() {
 		-Dpackage-origin="https://alpinelinux.org" \
 		-Dpackage-name="GStreamer good plug-ins (Alpine Linux)" \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -50,7 +50,7 @@ check() {
 
 package() {
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 _mv() {

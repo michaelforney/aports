@@ -29,14 +29,14 @@ build() {
 		-Dintrospection=enabled \
 		-Dvapi=enabled \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 sha512sums="4ab7777e8e910a5741628d10a9e22215b7811c03034dc3ccd1fa34bcfa2a643f27e7c005ab048f2931d58af4b161eee71e1f433cb55a74628da5b08ef8b693fd  libsoup-2.68.3.tar.xz"

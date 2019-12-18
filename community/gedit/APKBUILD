@@ -24,11 +24,11 @@ build() {
 		--buildtype=release \
 		-Ddocumentation=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="22968c678a2f7ecf062f490d5eedc97aaa53b15932db801ea83eb336f01f41e7a6037a85508a40164f38dee406f8db097b7ef6f1481ab44ea82668766d24966d  gedit-3.34.1.tar.xz"

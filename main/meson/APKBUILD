@@ -7,7 +7,7 @@ pkgdesc="Fast and user friendly build system"
 url="https://mesonbuild.com"
 arch="noarch"
 license="Apache-2.0"
-depends="ninja py3-setuptools python3"
+depends="samurai py3-setuptools python3"
 subpackages="$pkgname-doc $pkgname-vim::noarch"
 source="https://github.com/mesonbuild/meson/releases/download/$pkgver/meson-$pkgver.tar.gz
 	"

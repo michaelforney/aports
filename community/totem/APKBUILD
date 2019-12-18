@@ -24,15 +24,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	xvfb-run ninja -C output test
+	xvfb-run samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="9a3556f5cf522fca29926db185c2e5d25bdb80a25e14d0ba3062a7f15fc3ec40ae9f25752763bc444d4fd82ec2098efd732da662a1b1c5923ec19fde432606db  totem-3.34.1.tar.xz"

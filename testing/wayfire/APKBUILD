@@ -8,7 +8,7 @@ url="https://wayfire.org"
 arch="all"
 license="MIT"
 install="$pkgname.post-install"
-makedepends="wlroots-dev glm-dev wf-config-dev meson ninja cmake cairo-dev libexecinfo-dev"
+makedepends="wlroots-dev glm-dev wf-config-dev meson samurai cmake cairo-dev libexecinfo-dev"
 options="!check" # no testsuite
 subpackages="$pkgname-dev"
 source="https://github.com/WayfireWM/$pkgname/releases/download/$pkgver.0/$pkgname-$pkgver.tar.xz"
@@ -18,7 +18,7 @@ build() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 
 	install -Dm644 "$builddir/wayfire.ini.default" "$pkgdir/usr/share/wayfire/wayfire.ini.default"
 	install -Dm644 "$builddir/wayfire.desktop" "$pkgdir/usr/share/wayland-sessions/wayfire.desktop"

@@ -23,15 +23,15 @@ build() {
 		-Denable-libgcrypt=yes \
 		-Dintrospection=true \
 		build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="afb02a7c70f2fda9cda67b9daa8bab5f15e68a4afd983fb865fb29de71fe8f5c8fdf716e714e3835ac1c3476ce188c6147924a840c4ba82f0c05c3d3c23f5173  totem-pl-parser-3.26.4.tar.xz"

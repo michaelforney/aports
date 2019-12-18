@@ -23,11 +23,11 @@ build() {
 		-Dman-pages=enabled \
 		-Dopencl=enabled \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="c1b9b9b39c03a9d99955446c54b5a70e4f53ad62fa2e9c9f42cf5a3b92b51eb14bab3ddd2a6d776428f79c920c91d699cb79a430c85c21cd74088e1ef7d5dbd1  wf-recorder-0.2.tar.xz"

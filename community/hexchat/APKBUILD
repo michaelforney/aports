@@ -23,12 +23,12 @@ build() {
 		-Dwith-sysinfo=false \
 		-Dwith-libcanberra=false \
 		build_dir/
-	ninja -C build_dir/
+	samu -C build_dir/
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C build_dir/ install
+	DESTDIR="$pkgdir" samu -C build_dir/ install
 	
 	# not worth a -dev pkg
 	rm -fr "$pkgdir"/usr/include

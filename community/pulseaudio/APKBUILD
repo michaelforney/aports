@@ -110,15 +110,15 @@ build() {
 		-Dx11=enabled \
 		-Dudevrulesdir=/usr/lib/udev/rules.d \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	install -Dm644 "$srcdir"/$pkgname.initd "$pkgdir"/etc/init.d/$pkgname
 	install -Dm644 "$srcdir"/$pkgname.confd "$pkgdir"/etc/conf.d/$pkgname

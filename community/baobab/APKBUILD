@@ -20,11 +20,11 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="e821ba445c65742e92580e12be9b82ff352c6a2a8a58bab7fba97b01a120a948b06e35459196f16e9eef347cc6c5aeacfd563e86d78c758099fbab2ecfc4aa0e  baobab-3.34.0.tar.xz"

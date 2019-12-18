@@ -73,11 +73,11 @@ build() {
 		-Dman-pages=true \
 		-Ddocumentation=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	# use gtk-update-icon-cache from gtk+2.0 for now. The icon cache is forward
 	# compatible so this is fine

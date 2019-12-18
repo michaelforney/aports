@@ -26,15 +26,15 @@ build() {
 	meson \
 		--prefix=/usr \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="021f3ffc5a43c8061bd50a0aad19fe1d004402e025c540ccebc39d1abd83aecacf5fd570402ebec60fefa17fcbe6255151000c06f93c861389713b569c919d14  osinfo-db-tools-v1.7.0.tar.gz"

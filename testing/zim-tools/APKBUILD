@@ -22,11 +22,11 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release
 
-	ninja -C build
+	samu -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md" 
 }

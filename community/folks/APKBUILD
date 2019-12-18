@@ -32,15 +32,15 @@ build() {
 		--buildtype=release \
 		-Ddocs=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="b134172077bed1655cd7f24b1402ed347d405b22114c33d6638040a5e475632ea33cde898a08fc143eaefc7057d4b6dccceac7e797e1976fdf88c58764818afe  folks-0.13.1.tar.xz

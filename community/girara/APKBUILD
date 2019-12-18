@@ -11,7 +11,7 @@ arch="all"
 license="zlib"
 checkdepends="dbus"
 makedepends="gtk+3.0-dev libnotify-dev json-c-dev intltool doxygen check-dev
-	xvfb ncurses meson ninja"
+	xvfb ncurses meson samurai"
 subpackages="$pkgname-doc $pkgname-dev $pkgname-lang"
 source="https://git.pwmt.org/pwmt/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz
 	test.sh"
@@ -21,7 +21,7 @@ builddir="$srcdir"/$pkgname-$pkgver
 build() {
 	cd "$builddir"
 	meson build --prefix=/usr
-	ninja -C build
+	samu -C build
 }
 
 check () {
@@ -33,7 +33,7 @@ check () {
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 doc() {
@@ -45,4 +45,4 @@ doc() {
 
 
 sha512sums="2764f339c4b5744330c60fa5c8c902a06952d6c5a38589d236fe290f9934b9128527658d8aa99d42806255403b90f55ea1a85e5bd09da4b3a8f7c48be4d94f51  girara-0.3.3.tar.gz
-2190d324753810c8dc5b109274dcf4f644e51edcda876c225ac76369dd569dda0b8db445b01dac1ac2b06178534d18e1074ca37d1a69622bdc58fd77350b4ddd  test.sh"
+7a1091dfc7bd53e294484235e39006f86aae12be58c8e51b2ae1631c89490337cb6736b9979bde72e192cdc62d61fa4a30442f5b2b50721207d806865be19d60  test.sh"

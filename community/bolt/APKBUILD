@@ -22,15 +22,15 @@ build() {
 		-Dman=true \
 		-Dsystemd=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="0fdbc026178a4ca6a8c53aa46933d1c411eb04e350955f8b10c7faff814576d0796dd28e56b968648e549c79cf5fa13d43970d797595af0f66457abaef8ace09  bolt-0.8.tar.gz"

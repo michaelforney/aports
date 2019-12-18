@@ -18,15 +18,15 @@ build() {
 		--libdir /usr/lib \
 		-Dexamples='' \
 		. build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="20e6490287295f3de08150f1b036a821b97443a303ee404c71981f57f4ef291b50b6b83acd2dbb5e86a827c40b3fd06d790dabe4de3b0075432111d67875e7d2  openhmd-0.3.0.tar.gz"

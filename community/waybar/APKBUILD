@@ -25,11 +25,11 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="c670fd21a7d29396d8bbe1b7540ddbbe44a98f7fb49f8518e0cc302aa57e5bb993ff8306973a7b8ca4ec000a7ecc311872762a0782ce19e4bf4cff8ea09caccb  Waybar-0.8.0.tar.gz

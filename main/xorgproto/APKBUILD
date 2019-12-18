@@ -55,12 +55,12 @@ build() {
 		--datadir=/usr/lib \
 		-Dlegacy=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	# cleanup
 	rm -f "$pkgdir"/usr/include/X11/extensions/apple*

@@ -8,7 +8,7 @@ pkgdesc="Bare libuv  bindings for lua"
 url="https://github.com/luvit/luv"
 arch="all !s390x"
 license="Apache-2.0"
-makedepends="cmake luajit-dev libuv-dev ninja"
+makedepends="cmake luajit-dev libuv-dev samurai"
 subpackages="$pkgname-dev"
 source="https://github.com/luvit/luv/releases/download/${pkgver%.*}-$_release/luv-${pkgver%.*}-$_release.tar.gz"
 builddir="$srcdir/luv-${pkgver%.*}-$_release"
@@ -27,7 +27,7 @@ build() {
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		..
-	ninja
+	samu
 }
 
 check() {
@@ -37,7 +37,7 @@ check() {
 
 package() {
 	cd "$builddir"/build
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 }
 
 sha512sums="935a27e04aa13dc433a05512c0d332157d9cdc63a8688e034b07bd9e303ee37ea3e19aa350ac4858075bbc23a9f976aa295424faa77f7e7863060a744e1e1e83  luv-1.32.0-0.tar.gz"

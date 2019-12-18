@@ -36,15 +36,15 @@ build() {
 		-Dwith-pci-ids-path=/usr/share/hwdata/pci.ids \
 		-Dwith-usb-ids-path=/usr/share/hwdata/usb.ids \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="15b39743a90b1da37ad3430a8939ffd4a806fa3b61063a50691c2480a312514f257d046d87f883614cfaf16767408370780416baaba145e078a918f5b8378a76  libosinfo-v1.7.1.tar.gz"

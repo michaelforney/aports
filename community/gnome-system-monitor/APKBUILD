@@ -20,15 +20,15 @@ build() {
 		--datadir=/usr/share \
 		-Dsystemd=false \
 		output .
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="badfb98e4508096336bba4be79ce359cf4363649e97c1da534ed96a04de4bc57e12b84ed75bfa9086e00b61b6558ee4af25eee14f0d2636d3ee0b62956122cbd  gnome-system-monitor-3.32.1.tar.xz"

@@ -27,10 +27,10 @@ build() {
 		--buildtype=release \
 		-Dgtk_doc=false \
 		. output
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 sha512sums="a939b96feda20b0eba2b87556b97a9ba4b9aaea4c82c0e274a23796a3a9b49cb93be582d79e32a52a87b5ca6e35182a9d617cb802802b3c2ba2bff2b028aa3de  libwnck-3.32.0.tar.xz"

@@ -17,7 +17,7 @@ makedepends="
 	libxkbcommon-dev
 	mesa-dev
 	meson
-	ninja
+	samurai
 	pixman-dev
 	wayland-dev
 	wayland-protocols
@@ -35,11 +35,11 @@ build() {
 		-Dlogind=enabled \
 		-Dlogind-provider=elogind \
 		. build
-	ninja -C build
+	samu -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="da41513de48e00303b31fde620463389103215011c6cc49b9a2420a1529889722aa54f26a211179c528709edb6b90ba2efdae5e4bcef18147d9516f3a94e365a  wlroots-0.8.1.tar.gz

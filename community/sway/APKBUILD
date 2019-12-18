@@ -17,7 +17,7 @@ makedepends="cairo-dev
 	libxkbcommon-dev
 	linux-pam-dev
 	meson
-	ninja
+	samurai
 	pango-dev
 	pcre2-dev
 	scdoc
@@ -43,7 +43,7 @@ build() {
 		--mandir=/usr/share/man \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 bashcomp() {
@@ -75,7 +75,7 @@ zshcomp() {
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 	chmod u+s "$pkgdir"/usr/bin/sway
 }
 

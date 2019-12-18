@@ -20,15 +20,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="8b3c84012d69fa7d2cae12c9e4b37ac49a761ed5e6a375b990887872aff313d9b434b9793fa86980bbfe9077c228b6d5d2bd8861b18f403470539710386992d0  gnome-screenshot-3.34.0.tar.xz"

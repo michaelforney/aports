@@ -21,15 +21,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="f8fd91deef1516b4a18a599415d54a04413a5771916a5c7105e22876e239fe22c325f2e3196f7bff23293893c85fe886fa3a8b4b380aecab62b5b02de58c7185  gnome-weather-3.34.0.tar.xz"

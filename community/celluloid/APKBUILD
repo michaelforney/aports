@@ -21,15 +21,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="22e04ee774ca1e3d9bdc966ce32ca4c6f00ac5731b4019a4e92552d74524f7a20d4dfcb94f1c043f906c0bbb121708b08d34b00bc8a914391f38eaf08c7e50c2  celluloid-0.18.tar.xz"

@@ -17,11 +17,11 @@ prepare() {
 }
 
 build() {
-	ninja -C "$srcdir/build"
+	samu -C "$srcdir/build"
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	DESTDIR="$pkgdir" samu -C "$srcdir/build" install
 }
 
 sha512sums="f071f04f1ff7d2b89ae72238ef1a28fd3fbc389803e4a4fe0c3d938c7a2a1cc962b63929d081d975f98131ff6dd9637762e8036bb320277e2580f0cbeb0c6201  cage-0.1.1.tar.gz"

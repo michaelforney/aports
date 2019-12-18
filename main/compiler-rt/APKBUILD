@@ -15,7 +15,7 @@ makedepends="
 	clang
 	llvm-dev>=$_llvmver
 	llvm-static>=$_llvmver
-	ninja
+	samurai
 	python3
 	"
 checkdepends="gtest-dev llvm-test-utils>=$_llvmver"
@@ -46,7 +46,7 @@ build() {
 		-DLLVM_EXTERNAL_LIT="/usr/bin/lit" \
 		-DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src" \
 		-G Ninja
-	ninja
+	samu
 }
 
 check() {
@@ -54,13 +54,13 @@ check() {
 	# remove test that does not work with PaX kernel
 	rm ../test/builtins/Unit/enable_execute_stack_test.c \
 		../test/builtins/Unit/clear_cache_test.c
-	ninja check-compiler-rt
+	samu check-compiler-rt
 }
 
 package() {
 	cd "$builddir"/build
 
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 
 	cd "$pkgdir"
 

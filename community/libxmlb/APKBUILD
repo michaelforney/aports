@@ -20,15 +20,15 @@ build() {
 		-Dstemmer=false \
 		-Dintrospection=true \
 		build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 	rm -rf "$pkgdir"/usr/share/installed-tests
 	rm -rf "$pkgdir"/usr/libexec/installed-tests
 }

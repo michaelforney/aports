@@ -25,11 +25,11 @@ build() {
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--localstatedir=/var
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="2115bff8858146966dff1defa88cea3922a73a5f99cb3fdc9c720c4a831bad333d086390d3cd2cce5db21c30db0eee58ac161147d7eabc5fafcc5c5a28a66aa1  libgusb-0.3.1.tar.gz"

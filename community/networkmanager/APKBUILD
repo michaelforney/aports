@@ -80,16 +80,16 @@ build() {
 		-Dqt=false \
 		-Dofono=true \
 		. output
-	ninja -C output introspection/libnmdbus.a
-	ninja -C output
+	samu -C output introspection/libnmdbus.a
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	install -m755 -D "$srcdir"/networkmanager.initd "$pkgdir"/etc/init.d/networkmanager
 	install -m644 -D "$srcdir/$pkgname.conf" "$pkgdir"/etc/NetworkManager/NetworkManager.conf

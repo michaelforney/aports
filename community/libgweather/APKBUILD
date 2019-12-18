@@ -11,7 +11,7 @@ license="LGPL-2.1-or-later"
 depends="tzdata gsettings-desktop-schemas"
 makedepends="gtk+3.0-dev libsoup-dev libxml2-dev vala
 	glib-dev geocode-glib-dev gobject-introspection-dev
-	libxml2-utils gtk-doc glade-dev meson ninja"
+	libxml2-utils gtk-doc glade-dev meson samurai"
 subpackages="$pkgname-dev $pkgname-doc $pkgname-lang"
 source="https://download.gnome.org/sources/libgweather/${pkgver%.*}/libgweather-$pkgver.tar.xz
 	fix-test.patch
@@ -26,15 +26,15 @@ build() {
 		-Dgtk_doc=true \
 		-Denable_vala=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 dev() {

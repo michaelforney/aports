@@ -21,7 +21,7 @@ makedepends="
 	llvm$_llvmver-dev
 	llvm$_llvmver-static
 	llvm$_llvmver-test-utils
-	ninja
+	samurai
 	python3
 	"
 checkdepends="diffutils bash"
@@ -56,8 +56,8 @@ build() {
 		-DLLVM_ENABLE_EH=ON \
 		-DLLVM_ENABLE_RTTI=ON
 
-	ninja clang-tblgen
-	ninja
+	samu clang-tblgen
+	samu
 }
 
 check() {
@@ -72,7 +72,7 @@ check() {
 package() {
 	cd "$builddir"/build
 
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 	install -m 644 lib/libclang.a "$pkgdir"/usr/lib
 }
 

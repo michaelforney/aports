@@ -37,7 +37,7 @@ makedepends="
 	libxslt-dev
 	libxt-dev
 	mesa-dev
-	ninja
+	samurai
 	openjpeg-dev
 	openjpeg-tools
 	pango-dev
@@ -191,16 +191,16 @@ build() {
 		$_archopt \
 		..
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923476
-	ninja JavaScriptCore-4-gir
-	ninja
+	samu JavaScriptCore-4-gir
+	samu
 }
 
 check() {
-	ninja -C "$builddir"/build check
+	samu -C "$builddir"/build check
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C "$builddir"/build install
+	DESTDIR="$pkgdir" samu -C "$builddir"/build install
 	# needed for JIT
 	paxmark -m "$pkgdir"/usr/libexec/webkit2gtk-4.0/WebKitWebProcess
 }

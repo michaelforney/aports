@@ -22,12 +22,12 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	mkdir -p "$pkgdir"/usr/share/doc/$pkgname/
 	install -Dm644 AUTHORS COPYING "$pkgdir"/usr/share/doc/$pkgname/

@@ -10,7 +10,7 @@ license="LGPL"
 depends=""
 depends_dev="neko"
 makedepends="apache2-dev cmake gc-dev gtk+2.0-dev linux-headers mariadb-connector-c-dev
-	mbedtls-dev ninja sqlite-dev"
+	mbedtls-dev samurai sqlite-dev"
 options=""
 install=""
 subpackages="$pkgname-dev $pkgname-libs $pkgname-mysql $pkgname-ui
@@ -27,17 +27,17 @@ build() {
 	cd build || return 1
 
 	cmake "../" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNEKO_JIT_DISABLE=ON -GNinja || return 1
-	ninja || return 1
+	samu || return 1
 }
 
 check() {
 	cd "$builddir"
-	ninja -C build test || return 1
+	samu -C build test || return 1
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C build install || return 1
+	DESTDIR="$pkgdir" samu -C build install || return 1
 }
 
 _mv_ndll() {

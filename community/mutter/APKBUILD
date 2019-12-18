@@ -42,11 +42,11 @@ build() {
 		-Dremote_desktop=true \
 		-Dprofiler=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="d78fa702ee3e7e039c49f1c890c7b9ad79ee156ca7d9fc9952bd5ca04c3c569a7df7bdbad446ef53a939d6d1ec086f5aecd47b6844d34ce09b6ed9662bcbd0bd  mutter-3.34.2.tar.xz

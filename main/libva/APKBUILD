@@ -32,12 +32,12 @@ build() {
 		--prefix=/usr \
 		-Dwith_glx=no \
 		-Dwith_wayland=yes
-	ninja -C builddir
+	samu -C builddir
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C builddir install
+	DESTDIR="$pkgdir" samu -C builddir install
 }
 
 sha512sums="8a7de81367371d31f4bd988dec0ec9c47e6c89fcb17e6426e7b859fca63fb75ad57e555d658ce5cceac00dfcbc93428e625ef58da168c881f819a41134603232  libva-2.6.0.tar.gz"

@@ -26,11 +26,11 @@ build() {
 		-Dgtk-doc=false \
 		-Dintrospection=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 	rm -f "$pkgdir"/usr/lib/*.a
 }
 

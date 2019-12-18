@@ -34,7 +34,7 @@ build() {
 		-Dvapi=true \
 		output .
 
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -45,7 +45,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 	chown -R colord:colord "$pkgdir"/var/lib/colord
 }
 

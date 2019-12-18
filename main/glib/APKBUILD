@@ -36,7 +36,7 @@ build() {
 		--buildtype=release \
 		-Dman=true \
 		. output
-	ninja -C output
+	samu -C output
 
 	# FIXME: meson adds -lintl first in Libs: in the .pc file but it needs to be
 	#        last for static builds (e.g. qemu)
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 dev() {

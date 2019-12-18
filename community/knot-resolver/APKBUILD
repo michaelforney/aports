@@ -15,7 +15,7 @@ _depends_dnstap_dev="fstrm-dev protobuf-dev protobuf-c-dev"
 _depends_http="$pkgname lua5.1-http"
 depends_dev="knot-dev>=2.8.0 libedit-dev libuv-dev>=1.7 lmdb-dev luajit-dev>=2.0 $_depends_dnstap_dev"
 depends_static="$pkgname-dev"
-makedepends="$depends_dev bash cmake gnutls-dev luacheck meson>=0.46 ninja pkgconf py3-flake8"
+makedepends="$depends_dev bash cmake gnutls-dev luacheck meson>=0.46 samurai pkgconf py3-flake8"
 checkdepends="cmocka-dev"
 install="$pkgname.pre-install"
 subpackages="
@@ -61,7 +61,7 @@ build() {
 		-Dmanaged_ta=disabled \
 		-Dkeyfile_default=/usr/share/dnssec-root/trusted-key.key
 
-	ninja -C build
+	samu -C build
 }
 
 check() {
@@ -69,7 +69,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja install -C build
+	DESTDIR="$pkgdir" samu -C build install
 
 	cd "$pkgdir"
 

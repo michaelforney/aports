@@ -11,7 +11,7 @@ license="GPL-2.0-with-classpath-exception"
 depends="$pkgname-gtk3" # for the virtual openjfx12 package
 makedepends="binutils-gold
 	cmake
-	ninja
+	samurai
 	python2
 	gperf
 	openjdk11-jdk

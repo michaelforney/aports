@@ -65,15 +65,15 @@ build() {
 		--buildtype=release \
 		-Dsystemd=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	xvfb-run ninja -C output test
+	xvfb-run samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="be1d65620205648fdaa71717db197743e148296650d730e49313beb7c46613c4f159db90e5f61a8e4892071f4dbd5b4739eeb25d928dc5be846f9ea745e25dd5  gnome-shell-3.34.2.tar.xz"

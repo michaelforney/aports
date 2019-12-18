@@ -21,16 +21,16 @@ build() {
 		--default-library shared \
 		-Ddocs=true \
 		.  build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C "$builddir"/build test
+	samu -C "$builddir"/build test
 }
 
 package() {
 
-	DESTDIR="$pkgdir" ninja -C "$builddir"/build install
+	DESTDIR="$pkgdir" samu -C "$builddir"/build install
 }
 
 dev() {

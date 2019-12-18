@@ -30,7 +30,7 @@ build() {
 		--prefix=/usr \
 		-Dinstalled_tests=false \
 		output .
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -50,7 +50,7 @@ check() {
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 doc() {

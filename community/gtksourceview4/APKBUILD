@@ -26,15 +26,15 @@ build() {
 		--buildtype=release \
 		-Dglade_catalog=true \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	xvfb-run ninja -C output test
+	xvfb-run samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 dev() {

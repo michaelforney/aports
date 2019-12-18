@@ -59,7 +59,7 @@ makedepends="$depends_dev
 	mesa-dev
 	mesa-dev
 	minizip-dev
-	ninja
+	samurai
 	nodejs
 	nss-dev
 	openjdk8
@@ -266,12 +266,12 @@ build() {
 
 	msg "Ninja turtles GO!"
 	# workaround parallel build
-	ninja -C out/Release gen/ui/accessibility/ax_enums.p
+	samu -C out/Release gen/ui/accessibility/ax_enums.p
 
 	# build mksnapshot and paxmark it
-	ninja -C out/$_buildtype mksnapshot
+	samu -C out/$_buildtype mksnapshot
 	paxmark -m out/$_buildtype/mksnapshot
-	ninja -C out/$_buildtype v8_context_snapshot_generator
+	samu -C out/$_buildtype v8_context_snapshot_generator
 	paxmark -m out/Release/v8_context_snapshot_generator \
 		out/Release/obj/tools/v8_context_snapshot/v8_context_snapshot_generator
 
@@ -279,7 +279,7 @@ build() {
 	ulimit -n 2048
 
 	# finish rest of the build
-	ninja -C out/$_buildtype chrome chrome_sandbox chromedriver
+	samu -C out/$_buildtype chrome chrome_sandbox chromedriver
 }
 
 package() {

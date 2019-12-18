@@ -23,11 +23,11 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="6c69a1ee46a5ccfb4d6d1b7a60932412b486ad4576a4c78c89e03270147e30828ecaca6b5f0e27a741eb9d5ed74ca474ba0ddfb6d044748877b6c9ab7ae023a5  gnome-calendar-3.34.2.tar.xz"

@@ -25,15 +25,15 @@ build() {
 		-Dtestdata_tests=false \
 		${meson_opts} \
 		build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="37da9138a1dba68b9e723ba48b23eab567f839308132fc5a28727c131280f2eca3e160b074982f5265c914dcad0e4029af9ce23909b32bb9ec60f235c623e384  dav1d-0.5.2.tar.bz2"

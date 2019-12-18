@@ -23,15 +23,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="ad568cf1d635b7a1b00948a722dfbcba36ab2655a6b772962b4c2fb08d75e2a60787180017edd3305a7f4e3043cd9216cc5829a9889caf859cdc3d47f16da317  PasswordSafe-3.32.0.tar.gz

@@ -29,7 +29,7 @@ build() {
 		--sysconfdir=/etc \
 		--libexecdir=/usr/lib/$pkgname \
 		..
-	ninja
+	samu
 }
 
 check() {
@@ -38,7 +38,7 @@ check() {
 
 package() {
 	cd "$builddir"/build
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 }
 sha512sums="b0a38eb1cd7d923b0431af943dbdb89932833f9a2b0b8fc1fa9ee728c87418c1f5a424b2ccee661721093a80c569f3b41c721b0ba2302ba0c3a42d4c5e31aa9a  vte-0.58.3.tar.xz
 94de7160b71f1c41aa19e8f9dc4538cd493da1a33dda6482c332f8e8932213631ccc2355506a616772dae451d653f035c66c721bd839570d6cb55e4d2b12e8a3  fix-W_EXITCODE.patch"

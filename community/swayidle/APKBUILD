@@ -11,7 +11,7 @@ options="!check" # no test suite included
 makedepends="
 	elogind-dev
 	meson
-	ninja
+	samurai
 	scdoc
 	wayland-dev
 	wayland-protocols
@@ -26,11 +26,11 @@ source="$pkgname-$pkgver.tar.gz::https://github.com/swaywm/$pkgname/archive/$pkg
 
 build() {
 	meson build -Dlogind=enabled -Dlogind-provider=elogind --prefix /usr
-	ninja -C build
+	samu -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 bashcomp() {

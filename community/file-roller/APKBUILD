@@ -23,15 +23,15 @@ build() {
 		-Dpackagekit=false \
 		-Dcpio=/usr/bin/cpio \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="8256995f776524772936c6d60777c6c2668a610a672788a51ed83de1ae1c131b12373d2a918658f64f004757bb8c71b03edbf0c89776fcad6d64b4fc7fdb8e49  file-roller-3.32.3.tar.xz"

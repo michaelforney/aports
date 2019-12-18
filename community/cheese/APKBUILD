@@ -24,11 +24,11 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="093b4e5f7f15fd0c445fffd254d4a5035a4e3e91bacccdeeda64a4a7182901646daea5c8596c954a67896f9aaf37dab2309c21e8f026583f59d787a2c1e4c200  cheese-3.34.0.tar.xz"

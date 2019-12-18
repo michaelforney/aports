@@ -27,11 +27,11 @@ build() {
 		-Dgstreamer=enabled \
 		-Dsystemd=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="10d3e20cc3d233fbcd1fc39702ae3043a656ebcd9cd3c39c77f0cc2bf42ff4956fc03e7933c7b397bca446c63f45ddacea948d5ec7e4a3300499fa2794f14334  pipewire-0.2.7.tar.gz

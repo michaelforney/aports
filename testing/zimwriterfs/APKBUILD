@@ -20,15 +20,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 
 	install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }

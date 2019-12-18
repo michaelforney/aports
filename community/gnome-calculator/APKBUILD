@@ -20,15 +20,15 @@ build() {
 		--libdir=/usr/lib \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="43900cebc6b479292a45619f1e4f6afc5264e2dceda5d0049b59f27ebe2a32b5f4b2465a22f33b33b882ab0e737f7048fbe9395b18f9b5d2023da2941b6783f6  gnome-calculator-3.34.1.tar.xz"

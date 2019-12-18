@@ -20,15 +20,15 @@ build() {
 		--sysconfdir=/etc \
 		--buildtype=release \
 		output .
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="9b0039abdf408e4b0ff7041fdf5810477c57a883193c8245b68ab7afa839536ca88a420c87f8792a379cbd70589f3be6fa9365f0edd9c31449c2033ae46b3e6e  simple-scan-3.34.2.tar.xz"

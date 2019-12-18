@@ -21,15 +21,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="1d2b21a31550d4b48afd02a9fcfb9844eacac7aa726ef624abcb40225af31da29b34e9032b3bb2943e5cb5f7553a6f931467d04bfbc2b026732e6bdcb86eb840  gnome-tweaks-3.34.0.tar.xz"

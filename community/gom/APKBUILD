@@ -20,7 +20,7 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -29,7 +29,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="152924e704c92f39c493a8becc73fac1f7fe396f4f9e7c154dccec2b4413476821e43abf3c108cc1304de471e61f56c265f124710379ad8568b68f8902064e03  gom-0.3.3.tar.xz"

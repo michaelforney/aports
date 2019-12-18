@@ -25,7 +25,7 @@ build() {
 		-Dlyrics_screen=true \
 		-Dlyrics_plugin_dir=share/$pkgname/lyrics \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -33,7 +33,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 
 	mkdir -p "$pkgdir"/usr/share/$pkgname/lyrics
 	install -m755 lyrics/* \

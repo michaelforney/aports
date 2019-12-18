@@ -7,7 +7,7 @@ url="https://www.gnome.org/"
 arch="all"
 license="LGPL-2.0-or-later"
 makedepends="glib-dev gobject-introspection-dev intltool
-	json-glib-dev libsoup-dev meson ninja gtk-doc"
+	json-glib-dev libsoup-dev meson samurai gtk-doc"
 subpackages="$pkgname-dev $pkgname-doc"
 source="https://download.gnome.org/sources/geocode-glib/${pkgver%.*}/geocode-glib-$pkgver.tar.xz"
 
@@ -20,18 +20,18 @@ build() {
 		--sysconfdir=/etc \
 		-Denable-installed-tests=false \
 		..
-	ninja
+	samu
 }
 
 check() {
 	cd "$builddir"/build
-	ninja test
+	samu test
 }
 
 package() {
 	cd "$builddir"/build
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 }
 
 sha512sums="0eb8e8a668c3950d06e77a379d375e2297cf7d95435aa8212715ddc36c3a57a53192e75dd0c82a2f2e7e558ea0e903a477c9dfa54f8cd2805d048fe46265d621  geocode-glib-3.26.1.tar.xz"

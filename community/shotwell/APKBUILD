@@ -24,15 +24,15 @@ build() {
 		--buildtype=release \
 		-Dinstall-apport-hook=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="960574212d622c29d7617b874466e639d5a292eefdd2cac00ebcbf96d7db06002b9423440ee47ed84da7064d3eb70ba388b573a94c9e44c07d3b8f87faf09c58  shotwell-0.30.7.tar.xz"

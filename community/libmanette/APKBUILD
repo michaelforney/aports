@@ -20,15 +20,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="23d3feae3b0ba81deb75b0ff911eb37f3d0d767a0ae65815d34cadf69f78ca7f081177a2161105ea3979ba9222b3641e6b776bf4fcf3e46a9de716bdce475df6  libmanette-0.2.3.tar.xz"

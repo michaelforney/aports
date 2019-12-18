@@ -20,15 +20,15 @@ build() {
 		--buildtype=release \
 		--sysconfdir=/etc \
 		output .
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 	install -m644 -D "$srcdir/61-gnome-bluetooth-rfkill.rules" \
 		"$pkgdir/lib/udev/rules.d/61-gnome-bluetooth-rfkill.rules"
 }

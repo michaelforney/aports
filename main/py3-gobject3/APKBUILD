@@ -29,15 +29,15 @@ build()	{
 		-Dpython=python3 \
 		. output
 
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	xvfb-run ninja -C output test
+	xvfb-run samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C "$builddir"/output install
+	DESTDIR="$pkgdir" samu -C "$builddir"/output install
 }
 
 _dev() {

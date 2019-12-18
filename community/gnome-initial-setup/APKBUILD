@@ -28,11 +28,11 @@ build() {
 		-Dsoftware-sources=disabled \
 		-Dsystemd=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="87c3bb2b558612cfabc5969f8defa4f62d5c5b2560561c1e73091805eaa6c9faf5e3dee49e292a95eb564a3f4dd794d9c7a36258d39aae68b865b603c5e77456  gnome-initial-setup-3.34.1.tar.xz"

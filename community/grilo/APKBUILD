@@ -23,15 +23,15 @@ build() {
 		-Denable-introspection=true \
 		-Denable-vala=true \
 		build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="9089b0f64fdc4da82a4d087b54af407a37b64214e3553519d76bdafc380406851ed3cd060312b332b3cf67d0a105b72829e245846b47365c7101f52812ffbeda  grilo-0.3.10.tar.gz

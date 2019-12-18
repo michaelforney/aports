@@ -20,17 +20,17 @@ build() {
 		--buildtype=release \
 		-Ddocs=true \
 		output .
-	ninja -C output
+	samu -C output
 }
 
 check() {
 	cd "$builddir"
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="a7c8ec7c2166bb8734b065402bf7700cdc69f56c0958663e88596b155a20063e4cfbf1754d8b8ed94a4e509db2e97e2603b0a8037e61028acc85930e631a633e  atk-2.34.1.tar.xz"

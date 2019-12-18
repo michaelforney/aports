@@ -9,7 +9,7 @@ url="https://git.pwmt.org/pwmt/zathura-ps"
 arch="all"
 license="zlib"
 depends="zathura"
-makedepends="zathura-dev poppler-dev libspectre-dev meson ninja"
+makedepends="zathura-dev poppler-dev libspectre-dev meson samurai"
 source="https://git.pwmt.org/pwmt/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 
 options="!check"
@@ -19,12 +19,12 @@ builddir="$srcdir/$pkgname-$pkgver"
 build() {
 	cd "$builddir"
 	meson build --prefix=/usr
-	ninja -C build
+	samu -C build
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="c416f0f5ec399a688399ca10d9b017f16827712adc44eaf1ac6a2d0a638bd93cb664fdd3d8275c827b96a882edb4f0789cb18bf31a663bf42ad1e12873ab484f  zathura-ps-0.2.6.tar.gz"

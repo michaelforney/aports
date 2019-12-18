@@ -29,15 +29,15 @@ build() {
 		-Dgtk-doc=false \
 		-Dintrospection=true \
 		build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="13c34f475a9cdc0a766000e4bc6d7b41e1f437c9f3a971bf3c170347753156f00e34aea4c03fabad94acd915479ef8ec673c6e0a65579d91d3425b9595662ac6  geoclue-2.5.5.tar.bz2"

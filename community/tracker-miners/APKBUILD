@@ -31,15 +31,15 @@ build() {
 		-Dsystemd_user_services=no \
 		-Dminer_rss=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="ab5e42a759dda5f589efa258cfca7ba49703ca6fed4141c68f341d56ba887371c51fd8b9f22cf1b49425b10d26a9fe946fdcaa5b54e8771ff4a52abddf0c4b7b  tracker-miners-2.3.1.tar.xz

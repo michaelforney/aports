@@ -28,15 +28,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="3061294f8bb8482fc63a65f66fae04e7db74879bd99d03b57baf667486c9aa688a1bced4d202ce89e3b3131b74f31961a7ea4c722e2a5dceb2b5dbf51ef0503d  tau-0.9.3.tar.xz"

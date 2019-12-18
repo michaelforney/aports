@@ -22,15 +22,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="69ea158e52ba0138b523b8dd925e9a729b76f418a82c90ee46a0023fa9d5260afa080540e513f1bc05c34ab9e115733d06eff3f12a05654ab963e3219f9fb128  gnome-contacts-3.34.tar.xz"

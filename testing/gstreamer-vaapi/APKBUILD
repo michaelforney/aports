@@ -18,7 +18,7 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -26,7 +26,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="61554b5496dca595fa6e278a5634112e225784e9f0a7e731800fd04b395ba4e11dc467b8d074cb8cfed182fa9b9511c104192aecbba3ac755a4c32372061ac9f  gstreamer-vaapi-1.16.2.tar.xz"

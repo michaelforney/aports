@@ -24,15 +24,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="530de122ed24c0e734076c5ac275e60fcf1f2c5c2a231a9dbd65f8eacf162e440c4eb4014261e849a3335cfaa6bb8ee57184f48f53b0a5bb96b625de56b79ba1  gnome-boxes-3.34.2.tar.xz"

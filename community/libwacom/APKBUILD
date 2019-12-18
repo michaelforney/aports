@@ -18,15 +18,15 @@ build() {
 	meson \
 		--prefix=/usr \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="8b63d9bad18c27f8078711408a7b79c70086cd0c64fe692ee693d53d834dff8ab45631eabd206f0dfac80d8cc86c14b5833831b1b99b06e34aacd235176d266b  libwacom-1.1.tar.bz2

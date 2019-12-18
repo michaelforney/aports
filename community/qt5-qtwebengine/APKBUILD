@@ -10,7 +10,7 @@ license="LGPL-2.0 with exceptions or GPL-3.0 with exceptions"
 depends=""
 depends_dev="qt5-qtdeclarative-dev qt5-qtwebchannel-dev gstreamer-dev gst-plugins-base-dev
 	libxslt-dev mesa-dev icu-dev libxext-dev glib-dev libxcomposite-dev
-	libxrender-dev ninja ffmpeg-dev
+	libxrender-dev samurai ffmpeg-dev
 	"
 makedepends="$depends_dev
 	alsa-lib-dev
@@ -84,7 +84,7 @@ builddir="$srcdir"/qtwebengine-everywhere-src-$_V
 
 build() {
 	cd "$builddir"
-	export NINJA_PATH="/usr/bin/ninja"
+	export NINJA_PATH="/usr/bin/samu"
 	qmake-qt5 QMAKE_EXTRA_ARGS+="-webengine-ffmpeg -webengine-opus -webengine-webp"
 	make || paxmark -m src/core/release/mksnapshot && make
 }

@@ -31,11 +31,11 @@ build() {
 		-Dwayland=true \
 		-Dtests=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="02f1310b4e9ed384e02671520fc7df326cf5366a59d786bda00d6a9ceda620e38eada3bfdf4610c4e686960ef494a6323b7c04f70a3a5326639121471bfb566a  libva-utils-2.5.0.tar.gz"

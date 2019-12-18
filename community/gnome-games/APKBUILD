@@ -21,15 +21,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="df83535f253306b0399843fe899487079244a3640e72a0a85a0221cebf595c2bbf27fa4fc1182e529004a656e30d346eb6c30a9c19c2fbf45cefc8517ab30c86  gnome-games-3.34.2.tar.xz"

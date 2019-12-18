@@ -20,15 +20,15 @@ build() {
 		--prefix=/usr \
 		--default-library=shared \
 		. build
-	ninja -C build
+	samu -C build
 }
 
 check() {
-	ninja -C build test
+	samu -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" samu -C build install
 }
 
 sha512sums="116dc88d36d0e42439d63ac3cc5320c832e4e4b75259dcf630420b0f2551f36836d64edb89ec89e757e7d703ef7a655844d0dad4d0ecae7c9639c10067f7034f  glib-networking-2.62.2.tar.xz"

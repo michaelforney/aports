@@ -24,15 +24,15 @@ build() {
 		--localstatedir=/var \
 		--buildtype=release \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
-	ninja -C output test
+	samu -C output test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="317c9c4930fea21cb72d8551cc6f8ebb66a1fb2477e361a95fd3e5823a3b6597fdf74e110d45b4e9c17712ecf4c5a16bbedd159ec03d83f4ec23b8390cf398f7  rofi-1.5.4.tar.gz

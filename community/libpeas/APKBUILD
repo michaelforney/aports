@@ -23,7 +23,7 @@ build() {
 		-Dvapi=true \
 		-Ddemos=false \
 		. output
-	ninja -C output
+	samu -C output
 }
 
 check() {
@@ -31,7 +31,7 @@ check() {
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 py3() {

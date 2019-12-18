@@ -43,17 +43,17 @@ build() {
 		-Dsystemd=false \
 		-Dsimple-dmabuf-drm=auto \
 		build
-	ninja -C build
+	samu -C build
 }
 
 # Does not run through, see also:
 # https://github.com/alpinelinux/aports/pull/1689
 check() {
-	ninja -C "$builddir"/build test
+	samu -C "$builddir"/build test
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C "$builddir"/build install
+	DESTDIR="$pkgdir" samu -C "$builddir"/build install
 
 	mkdir -p "$pkgdir"/usr/lib
 	mv "$pkgdir"/usr/share/pkgconfig/* "$pkgdir"/usr/lib/pkgconfig/

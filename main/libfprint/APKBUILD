@@ -27,12 +27,12 @@ build() {
 		-Dx11-examples=false \
 		-Ddoc=false \
 		output
-	ninja -C output
+	samu -C output
 }
 
 package() {
 	cd "$builddir"
-	DESTDIR="$pkgdir" ninja -C output install
+	DESTDIR="$pkgdir" samu -C output install
 }
 
 sha512sums="6a38a691d1f2d5fe19b5bbda9b77321d2e34f1a3aa8b61f38109e0095b28e156cdd7be5ade8f3db8ff26045f8556b68e938b3e1378f4b6d84a2106566e7fdb53  libfprint-1.0.tar.xz
