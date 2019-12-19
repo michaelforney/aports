@@ -12,6 +12,7 @@ makedepends="meson git wayland-protocols wayland-dev"
 source="
 	wob-$pkgver.tar.gz::https://github.com/francma/wob/archive/$pkgver.tar.gz
 	wlr-protocols-$_wlr_commit.tar.gz::https://github.com/swaywm/wlr-protocols/archive/$_wlr_commit.tar.gz
+	0001-Add-missing-dependencies-on-wlr-layer-shell-unstable.patch
 	"
 
 prepare() {
@@ -38,4 +39,5 @@ package() {
 	DESTDIR="$pkgdir" samu -C build-release install
 }
 sha512sums="01222db5eee86ec2c9312e1eed00e491810317f78e11b4066494fd98270c31ed2fabe30e466ed0bccf3daee9c30f749c7ea956b46349a7a8ba4104d95549280f  wob-0.4.tar.gz
-7782c52d250dcda1b224dd8beca266392460e5622a53893ea81b578a0ff59e7e4e5ab7268b4db092e8da7ed50c209daece9b53bfd6ba834ad0a8e6a719cb69a7  wlr-protocols-59497d93794efac39d8c85b1d964ad8a461cbeb6.tar.gz"
+7782c52d250dcda1b224dd8beca266392460e5622a53893ea81b578a0ff59e7e4e5ab7268b4db092e8da7ed50c209daece9b53bfd6ba834ad0a8e6a719cb69a7  wlr-protocols-59497d93794efac39d8c85b1d964ad8a461cbeb6.tar.gz
+a1cc6b9ef7a5cb483f3d382430ee6cba5b49875acbca02e0405989b259e803360fad977a628e18b4e88785e4268af2ce6a175dc7eb38e63927dc30972166a59c  0001-Add-missing-dependencies-on-wlr-layer-shell-unstable.patch"
