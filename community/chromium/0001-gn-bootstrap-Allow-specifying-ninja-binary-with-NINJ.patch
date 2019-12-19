@@ -1,0 +1,49 @@
+From 0c44d36106c22f3560452d10a4cfd9e670730da3 Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Wed, 18 Dec 2019 22:43:05 -0800
+Subject: [PATCH] gn bootstrap: Allow specifying ninja binary with $NINJA
+
+This allows the builder to specify the path of the ninja binary in case
+they want to use a specific version, or an alternate implementation
+like samurai[0].
+
+Also, when calling ninja, make sure build target comes after any options.
+
+[0] https://github.com/michaelforney/samurai
+---
+ tools/gn/bootstrap/bootstrap.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git tools/gn/bootstrap/bootstrap.py tools/gn/bootstrap/bootstrap.py
+index 8e121b59f3..8955e051ac 100755
+--- tools/gn/bootstrap/bootstrap.py
++++ tools/gn/bootstrap/bootstrap.py
+@@ -70,6 +70,7 @@ def main(argv):
+   out_dir = os.path.join(SRC_ROOT, build_rel)
+   gn_path = options.output or os.path.join(out_dir, 'gn')
+   gn_build_dir = os.path.join(out_dir, 'gn_build')
++  ninja_binary = os.environ.get('NINJA', 'ninja')
+ 
+   # TODO(thomasanderson): Remove this once Ubuntu Trusty reaches EOL, or when
+   # Chromium's infrastructure is upgraded from Trusty to Xenial, whichever comes
+@@ -90,7 +91,7 @@ def main(argv):
+               os.environ.get('CFLAGS', '').split() +
+               os.environ.get('CXXFLAGS', '').split()),
+       ]) + '\n')
+-    subprocess.check_call(['ninja', '-C', libcxx_dir])
++    subprocess.check_call([ninja_binary, '-C', libcxx_dir])
+     shutil.copy2(os.path.join(gn_build_dir, 'libc++.gn.so'), out_dir)
+ 
+     def append_to_env(var, vals):
+@@ -120,7 +121,7 @@ def main(argv):
+   shutil.copy2(
+       os.path.join(BOOTSTRAP_DIR, 'last_commit_position.h'), gn_build_dir)
+   subprocess.check_call(
+-      ['ninja', '-C', gn_build_dir, 'gn', '-w', 'dupbuild=err'])
++      [ninja_binary, '-C', gn_build_dir, '-w', 'dupbuild=err', 'gn'])
+   shutil.copy2(os.path.join(gn_build_dir, 'gn'), gn_path)
+ 
+   if not options.skip_generate_buildfiles:
+-- 
+2.24.1
+

@@ -102,6 +102,7 @@ source="https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
 	llvm-remove-unsupported-compiler-warnings.patch
 	upstream-dns_util-make-DohUpgradeEntry-non-const.patch
 	upstream-fix-shutdown-crash-in-ProfileManager.patch
+	0001-gn-bootstrap-Allow-specifying-ninja-binary-with-NINJ.patch
 
 	chromium-use-alpine-target.patch
 	media-base.patch
@@ -218,7 +219,7 @@ build() {
 	)
 
 #	AR="ar" CC="${CC:-gcc}" CXX="${CXX:-g++}" LD="${CXX:-g++}" \
-	CC="${CC:-clang}" CXX="${CXX:-clang++}" LD="${CXX:-clang++}" \
+	CC="${CC:-clang}" CXX="${CXX:-clang++}" LD="${CXX:-clang++}" NINJA=samu \
 		python tools/gn/bootstrap/bootstrap.py -s -v --gn-gen-args "$_c"
 
 	msg "Configuring build"
@@ -358,6 +359,7 @@ ef31809702ef020e02445ac36857c621cf852dea14c2fdf291ea0700b6fc6d94e3704726a051e95d
 8b7e10bca16951fde06da4155d507f2c047e4720b63570af1bbf2d2fd8d02d1d088df2e747fd9700088e6cdf0b23fd84fa86af1c68606506611205f5fbb432ba  llvm-remove-unsupported-compiler-warnings.patch
 bd2e937016a2ec3ded9b87ea0bab4683658a7ccad1e445478c9f4343d4a766c6c3b1188337ff556cac7b5f75b640103feba587fc9dbe8d57a402c62ca4d48f84  upstream-dns_util-make-DohUpgradeEntry-non-const.patch
 2ecd3b441ff71ed6373fcd0cef60c105f3b99a4057defb99f3e8bc2fe45ada349ffe6a51e306b5c5d8fdd55dfc570bb0c045024c09c0f4a3375f5a346ff11ac5  upstream-fix-shutdown-crash-in-ProfileManager.patch
+fc42598d8cff6b2144c6d2457c68768c9d414c7b9e73cdee14f067d9c735dcc2f6a786960fc281af5881209b6255a873614a30ee576f93d9507c84ba30fa03d5  0001-gn-bootstrap-Allow-specifying-ninja-binary-with-NINJ.patch
 50e2c78bc2e7f343ed97d348bbe34350439ede6a15bf8ea1017eb13c391d4718b00a51db9c2eb40d8398d9733bf1925db42011f3bcbdd7d83329b1c7d534032b  chromium-use-alpine-target.patch
 589a7acf149d44db081da2dd24a7769f2b9572a8cc64d2aad78577a64768d3b6fb2bfa02292b5260acd2c4a28c3ae9b82847ff901ce8a21baeca0b46dcda0ca9  media-base.patch
 05c1af43038f76014f5f8b605085310414242f2bfad0e3258ddb29a08e7f4307de31b2d551b0a291986cc7d5a01cf3a003ac864216877195bb4310fd33193f0f  musl-crashpad.patch
