@@ -79,6 +79,7 @@ source="http://download.qt-project.org/$_rel/qt/${pkgver%.*}/$_ver/submodules/qt
 	qt-musl-thread-stacksize.patch
 	musl-sandbox.patch
 	yasm-nls.patch
+	0001-Allow-building-with-samurai-as-system-ninja.patch
 	"
 builddir="$srcdir"/qtwebengine-everywhere-src-$_V
 
@@ -113,4 +114,5 @@ b1f7823d0bdd14dbcb4dbd72ab2d16460d343722d2601921a50f8912ce580a632e0d7b01d7fea6f2
 7dc3e9995596adef65cd96f650eb7ee13d52cabfe6353f04eeb5b8a5776e7e0585ffc2a0a31deea6924352ee9a5a8e03ac37432b558c6a46f3dc457b4283392a  qt-musl-stackstart.patch
 b37fbc4df03c82123f94982039defa12d9bb8c885c9dcf8fff556b5f9cc58182fa471f970cc3a5e2d5dbe964855f591b474366b6a8926d94ae6a78e883811c1a  qt-musl-thread-stacksize.patch
 76b1966bdd76fd22f0073b23be50f69fb95451e06bdce567a439b0fbb69ff2956264704f5b53c50842e9c4aafaab7d2f330465a04092b66c5965e5d0ae2c7761  musl-sandbox.patch
-f6b1941e40f44b675ab554166e3cd8d3272b23f48571b4949b3af7b8e1c642ee84fe0ee26dd2457fc3bf20e9924cddb411e293b7a8a103029ee196587371a1e2  yasm-nls.patch"
+f6b1941e40f44b675ab554166e3cd8d3272b23f48571b4949b3af7b8e1c642ee84fe0ee26dd2457fc3bf20e9924cddb411e293b7a8a103029ee196587371a1e2  yasm-nls.patch
+559c0332a0f8b43b9f022912fad38ec4c03b3b2d195a43b228e2cfe521a7782ee79407287d0b1d03e3bdaf0383e37ade85d286c38c2cb5002bbaaa3836686eab  0001-Allow-building-with-samurai-as-system-ninja.patch"

@@ -1,0 +1,127 @@
+From 996fd5de89e4eab21a2616dfb0c4317395039366 Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Thu, 19 Dec 2019 16:36:36 -0800
+Subject: [PATCH] Allow building with samurai as system ninja
+
+---
+ configure.pri                  | 10 ++++++++--
+ mkspecs/features/functions.prf | 11 +++++++----
+ src/buildtools/gn.pro          |  4 +---
+ src/core/configure.json        |  8 ++++++--
+ src/core/gn_run.pro            |  6 +-----
+ 5 files changed, 23 insertions(+), 16 deletions(-)
+
+diff --git a/configure.pri b/configure.pri
+index 897bea54..7f15deeb 100644
+--- a/configure.pri
++++ b/configure.pri
+@@ -107,11 +107,17 @@ defineTest(qtConfTest_detectGlibc) {
+ }
+ 
+ defineTest(qtConfTest_detectNinja) {
+-    ninja = $$qtConfFindInPath("ninja$$EXE_SUFFIX")
++    ninja = $$qtConfFindInPath("ninja$$EXE_SUFFIX" "samu$$EXE_SUFFIX")
+     !isEmpty(ninja) {
+         qtLog("Found ninja from path: $$ninja")
+         qtRunLoggedCommand("$$ninja --version", version)|return(false)
+-        contains(version, "1.[7-9].*"): return(true)
++        contains(version, "1.[7-9].*") {
++            $${1}.path = $$ninja
++            export($${1}.path)
++            $${1}.cache += path
++            export($${1}.cache)
++            return(true)
++        }
+         qtLog("Ninja version too old")
+     }
+     qtLog("Building own ninja")
+diff --git a/mkspecs/features/functions.prf b/mkspecs/features/functions.prf
+index d3eda85b..723cf7e1 100644
+--- a/mkspecs/features/functions.prf
++++ b/mkspecs/features/functions.prf
+@@ -55,10 +55,13 @@ defineReplace(pythonPathForSystem) {
+ }
+ 
+ defineReplace(ninjaPath) {
+-    src_3rd_party_dir = $$absolute_path("$${getChromiumSrcDir()}/../", "$$QTWEBENGINE_ROOT")
+-    out = $$shadowed($$absolute_path(ninja/ninja, $$src_3rd_party_dir))
+-    win32: out = $${out}.exe
+-    return($$out)
++    isEmpty(QMAKE_NINJA) {
++        src_3rd_party_dir = $$absolute_path("$${getChromiumSrcDir()}/../", "$$QTWEBENGINE_ROOT")
++        out = $$shadowed($$absolute_path(ninja/ninja, $$src_3rd_party_dir))
++        win32: out = $${out}.exe
++        QMAKE_NINJA = $$out
++    }
++    return($$QMAKE_NINJA)
+ }
+ 
+ defineReplace(gnPath) {
+diff --git a/src/buildtools/gn.pro b/src/buildtools/gn.pro
+index 559cdf18..60f5566d 100644
+--- a/src/buildtools/gn.pro
++++ b/src/buildtools/gn.pro
+@@ -11,8 +11,6 @@ build_pass|!debug_and_release {
+         buildgn.target = build_gn
+         out = $$gnPath()
+         out_path = $$dirname(out)
+-        !qtConfig(webengine-system-ninja): ninja_path = $$ninjaPath()
+-        else: ninja_path="ninja"
+         # check if it is not already build
+         !exists($$out) {
+             src_3rd_party_dir = $$absolute_path("$${getChromiumSrcDir()}/../", "$$QTWEBENGINE_ROOT")
+@@ -22,7 +20,7 @@ build_pass|!debug_and_release {
+             !system("$$pythonPathForSystem() $$gn_configure") {
+                 error("GN generation error!")
+             }
+-            !system("cd $$system_quote($$system_path($$out_path)) && $$ninja_path $$basename(out)" ) {
++            !system("cd $$system_quote($$system_path($$out_path)) && $$system_quote($$system_path($$ninjaPath())) $$basename(out)" ) {
+                 error("GN build error!")
+             }
+         }
+diff --git a/src/core/configure.json b/src/core/configure.json
+index b9c92044..e6fbacaa 100644
+--- a/src/core/configure.json
++++ b/src/core/configure.json
+@@ -293,7 +293,8 @@
+         },
+         "webengine-ninja": {
+             "label": "system ninja",
+-            "type": "detectNinja"
++            "type": "detectNinja",
++            "log": "path"
+         },
+         "webengine-gn": {
+             "label": "system gn",
+@@ -607,7 +608,10 @@
+         "webengine-system-ninja": {
+             "label": "Use System Ninja",
+             "condition": "tests.webengine-ninja",
+-            "output": [ "privateFeature" ]
++            "output": [
++                "privateFeature",
++                { "type": "varAssign", "name": "QMAKE_NINJA", "value": "tests.webengine-ninja.path" }
++            ]
+         },
+         "webengine-system-gn": {
+             "label": "Use System Gn",
+diff --git a/src/core/gn_run.pro b/src/core/gn_run.pro
+index 9860c454..fbc7ecc4 100644
+--- a/src/core/gn_run.pro
++++ b/src/core/gn_run.pro
+@@ -5,11 +5,7 @@ TEMPLATE = aux
+ 
+ qtConfig(debug_and_release): CONFIG += debug_and_release build_all
+ 
+-qtConfig(webengine-system-ninja) {
+-    QT_TOOL.ninja.binary = ninja
+-} else {
+-    QT_TOOL.ninja.binary = $$shell_quote($$shell_path($$ninjaPath()))
+-}
++QT_TOOL.ninja.binary = $$shell_quote($$shell_path($$ninjaPath()))
+ 
+ win32 {
+     # Add the gnuwin32/bin subdir of qt5.git to PATH. Needed for calling bison and friends.
+-- 
+2.24.1
+
